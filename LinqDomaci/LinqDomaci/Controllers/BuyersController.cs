@@ -91,5 +91,19 @@ namespace LinqDomaci.Controllers
             return View();
         }
 
+        //zadatak2
+        public ActionResult Sort()
+        {
+            var orderByResult = Details().OrderBy(s => s.Name).ThenBy(s => s.Age);
+            List<Kupac> kupci = Details();
+            var orderBy = from k in kupci.OrderBy(k => k.Age)
+                          orderby k.Name
+                          select k;
+
+            return View(orderBy);       
+                          
+                         
+        }
+
     }
 }
